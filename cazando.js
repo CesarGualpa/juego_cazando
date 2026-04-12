@@ -1,6 +1,12 @@
 let canvas;
 let ctx;
 let puntos = 0;
+let tiempo = 10;
+
+function restarTiempo() {
+    tiempo = tiempo - 1;
+    mostrarEnSpan("tiempo", tiempo);
+}
 
 function graficarRectangulo(x, y, ancho, alto, color) {
     ctx.fillStyle = color;
@@ -40,6 +46,8 @@ function iniciarJuego() {
     graficarGato();
     graficarComida();
     mostrarEnSpan("puntos", puntos);
+    mostrarEnSpan("tiempo", tiempo);
+    setInterval(restarTiempo, 1000);
 }
 
 function limpiarCanva() {
