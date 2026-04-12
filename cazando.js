@@ -1,7 +1,7 @@
 let canvas;
 let ctx;
 let puntos = 0;
-let tiempo = 10;
+let tiempo = 15;
 let intervalo;
 
 function restarTiempo() {
@@ -55,6 +55,28 @@ function iniciarJuego() {
     mostrarEnSpan("tiempo", tiempo);
     intervalo = setInterval(restarTiempo, 1000);}
 
+    function reiniciarJuego() {
+    clearInterval(intervalo);
+
+    puntos = 0;
+    tiempo = 15;
+
+    gatoX = (canvas.width / 2) - (ANCHO_GATO / 2);
+    gatoY = (canvas.height / 2) - (ALTO_GATO / 2);
+
+    comidaX = canvas.width - ANCHO_COMIDA;
+    comidaY = canvas.height - ALTO_COMIDA;
+
+    limpiarCanva();
+    graficarGato();
+    graficarComida();
+
+    mostrarEnSpan("puntos", puntos);
+    mostrarEnSpan("tiempo", tiempo);
+
+    intervalo = setInterval(restarTiempo, 1000);
+}
+
 function limpiarCanva() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
@@ -85,7 +107,9 @@ function detectarColision() {
 }
 
 function moverIzquierda() {
-    gatoX = gatoX - 50;
+    if (gatoX > 0) {
+        gatoX = gatoX - 60;
+    }
     limpiarCanva();
     graficarGato();
     graficarComida();
@@ -93,7 +117,9 @@ function moverIzquierda() {
 }
 
 function moverDerecha() {
-    gatoX = gatoX + 50;
+    if (gatoX + ANCHO_GATO < canvas.width) {
+        gatoX = gatoX + 60;
+    }
     limpiarCanva();
     graficarGato();
     graficarComida();
@@ -101,7 +127,9 @@ function moverDerecha() {
 }
 
 function moverArriba() {
-    gatoY = gatoY - 50;
+    if (gatoY > 0) {
+        gatoY = gatoY - 60;
+    }
     limpiarCanva();
     graficarGato();
     graficarComida();
@@ -109,7 +137,9 @@ function moverArriba() {
 }
 
 function moverAbajo() {
-    gatoY = gatoY + 50;
+    if (gatoY + ALTO_GATO < canvas.height) {
+        gatoY = gatoY + 60;
+    }
     limpiarCanva();
     graficarGato();
     graficarComida();
