@@ -1,0 +1,2 @@
+Agrega imágenes a mi proyecto Juego Cazando usando solo HTML y CSS.
+Quiero incorporar un fondo obtenido de internet y mejorar la apariencia visual sin modificar el archivo JavaScript.
