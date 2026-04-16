@@ -1,0 +1,2 @@
+Mejora la interfaz gráfica de mi juego Cazando HTML y CSS.  
+Quiero un diseño simple, ordenado, con colores que combinen, botones más bonitos, un panel para puntos y tiempo, y una mejor presentación del canvas y del texto.
