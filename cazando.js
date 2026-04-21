@@ -2,6 +2,7 @@ let canvas;
 let ctx;
 let puntos = 0;
 let tiempo = 15;
+let tiempoLimite = 15;
 let intervalo;
 
 function restarTiempo() {
@@ -59,7 +60,8 @@ function iniciarJuego() {
     clearInterval(intervalo);
 
     puntos = 0;
-    tiempo = 15;
+    tiempoLimite = 15;
+    tiempo = tiempoLimite;
 
     gatoX = (canvas.width / 2) - (ANCHO_GATO / 2);
     gatoY = (canvas.height / 2) - (ALTO_GATO / 2);
@@ -92,12 +94,18 @@ function detectarColision() {
         puntos = puntos + 1;
         mostrarEnSpan("puntos", puntos);
         
-        tiempo=15;
+        tiempoLimite=tiempoLimite - 1;
+        if(tiempoLimite<1){
+            tiempoLimite=1;
+        }
+
+        tiempo=tiempoLimite;
         mostrarEnSpan("tiempo", tiempo);
 
         if (puntos === 6) {
             alert("Ganaste");
             clearInterval(intervalo);
+            return;
         }
 
         comidaX = generarAleatorio(0, canvas.width - ANCHO_COMIDA);
